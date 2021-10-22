@@ -1,0 +1,18 @@
+> install.packages("boot")
+trying URL 'https://cran.mtu.edu/bin/macosx/mavericks/contrib/3.2/boot_1.3-18.tgz'
+Content type 'application/x-gzip' length 580068 bytes (566 KB)
+==================================================
+downloaded 566 KB
+
+
+The downloaded binary packages are in
+	/var/folders/k6/53lprdwx64v0rb3j30n3hg480000gn/T//RtmpITuLwD/downloaded_packages
+> help(boot)
+No documentation for ‘boot’ in specified packages and libraries:
+you could try ‘??boot’
+> help(bootstrap)
+No documentation for ‘bootstrap’ in specified packages and libraries:
+you could try ‘??bootstrap’
+starting httpd help server ... done
+> help(boot)
+> 

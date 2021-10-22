@@ -1,0 +1,363 @@
+> qA = c(0.623,0.626653103,0.633692458,0.637341153,0.639097744,0.636788049,0.642651297,0.650557621,0.637558685,0.638353765,0.662921348,0.674462114,0.671902269,0.666103128,0.676421405,0.688065844,0.695374801,0.700241741,0.705263158,0.712887439,0.715427658,0.735171261,0.737357259,0.733722871,0.71758877,0.709553159,0.699036323,0.687193842,0.686219081,0.692041522,0.682959049,0.680503145,0.675903614,0.682282282)
+> k = c(2.06,2.1,2.17,2.21,2.23,2.2,2.26,2.34,2.21,2.22,2.47,2.58,2.55,2.49,2.61,2.74,2.81,2.87,2.93,3.02,3.06,3.3,3.33,3.28,3.1,3,2.87,2.72,2.71,2.78,2.66,2.63,2.58,2.64)
+> dat = data.frame(qA,k)
+> attach(dat)
+The following objects are masked _by_ .GlobalEnv:
+
+    k, qA
+
+The following objects are masked from dat (pos = 3):
+
+    k, qA
+
+> dat
+          qA    k
+1  0.6230000 2.06
+2  0.6266531 2.10
+3  0.6336925 2.17
+4  0.6373412 2.21
+5  0.6390977 2.23
+6  0.6367880 2.20
+7  0.6426513 2.26
+8  0.6505576 2.34
+9  0.6375587 2.21
+10 0.6383538 2.22
+11 0.6629213 2.47
+12 0.6744621 2.58
+13 0.6719023 2.55
+14 0.6661031 2.49
+15 0.6764214 2.61
+16 0.6880658 2.74
+17 0.6953748 2.81
+18 0.7002417 2.87
+19 0.7052632 2.93
+20 0.7128874 3.02
+21 0.7154277 3.06
+22 0.7351713 3.30
+23 0.7373573 3.33
+24 0.7337229 3.28
+25 0.7175888 3.10
+26 0.7095532 3.00
+27 0.6990363 2.87
+28 0.6871938 2.72
+29 0.6862191 2.71
+30 0.6920415 2.78
+31 0.6829590 2.66
+32 0.6805031 2.63
+33 0.6759036 2.58
+34 0.6822823 2.64
+> plot(dat$k,dat$qA)
+
+> cov(dat)
+            qA          k
+qA 0.001081356 0.01185089
+k  0.011850887 0.13037193
+> cor(dat)
+         qA        k
+qA 1.000000 0.998101
+k  0.998101 1.000000
+> results = lm(k~qA)
+> results
+
+Call:
+lm(formula = k ~ qA)
+
+Coefficients:
+(Intercept)           qA  
+     -4.792       10.959  
+
+> qqnorm(results$res)
+> qqline(results$res)
+
+> summary(results)
+
+Call:
+lm(formula = k ~ qA)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.045308 -0.018338  0.000181  0.016931  0.041110 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -4.79202    0.08117  -59.04   <2e-16 ***
+qA          10.95928    0.11956   91.66   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.02259 on 32 degrees of freedom
+Multiple R-squared:  0.9962,	Adjusted R-squared:  0.9961 
+F-statistic:  8402 on 1 and 32 DF,  p-value: < 2.2e-16
+
+> 
+> qA = c(0.623,0.626653103,0.633692458,0.637341153,0.639097744,0.636788049,0.642651297,0.650557621,0.637558685,0.638353765,0.662921348,0.674462114,0.671902269,0.666103128,0.676421405,0.688065844,0.695374801,0.700241741,0.705263158,0.712887439,0.715427658,0.735171261,0.737357259,0.733722871,0.71758877,0.709553159,0.699036323,0.687193842,0.686219081,0.692041522,0.682959049,0.680503145,0.675903614,0.682282282,0.697399527,0.69812362,0.700540541,0.686828717,0.686601495,0.691001698,0.704809287)
+> k = c(2.06,2.1,2.17,2.21,2.23,2.2,2.26,2.34,2.21,2.22,2.47,2.58,2.55,2.49,2.61,2.74,2.81,2.87,2.93,3.02,3.06,3.3,3.33,3.28,3.1,3,2.87,2.72,2.71,2.78,2.66,2.63,2.58,2.64,2.62,2.63,2.66,2.5,2.5,2.55,2.7)
+> fit = lm(qA~k)
+> summary(fit)
+
+Call:
+lm(formula = qA ~ k)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.0067476 -0.0053704 -0.0026208 -0.0005645  0.0177007 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.44512    0.01058   42.08   <2e-16 ***
+k            0.08963    0.00399   22.46   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.008322 on 39 degrees of freedom
+Multiple R-squared:  0.9283,	Adjusted R-squared:  0.9264 
+F-statistic: 504.6 on 1 and 39 DF,  p-value: < 2.2e-16
+
+> fit=lm(qA~log(k))
+> summary(fit)
+
+Call:
+lm(formula = qA ~ log(k))
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.004783 -0.003875 -0.003207 -0.001525  0.016249 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.452369   0.009028   50.11   <2e-16 ***
+log(k)      0.238146   0.009328   25.53   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.007383 on 39 degrees of freedom
+Multiple R-squared:  0.9435,	Adjusted R-squared:  0.9421 
+F-statistic: 651.8 on 1 and 39 DF,  p-value: < 2.2e-16
+
+> summary(ltsReg(x=(-1/k), y=qA, intercept = TRUE, alpha =1))
+
+Call:
+ltsReg.default(x = (-1/k), y = qA, intercept = TRUE, alpha = 1)
+
+Residuals (from reweighted LS):
+      Min        1Q    Median        3Q       Max 
+-0.006293 -0.004743 -0.003060  0.002657  0.014608 
+
+Coefficients:
+          Estimate Std. Error t value Pr(>|t|)    
+Intercept 0.919672   0.008914  103.17   <2e-16 ***
+(-1/k)    0.618630   0.022928   26.98   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.007006 on 39 degrees of freedom
+Multiple R-Squared: 0.9492,	Adjusted R-squared: 0.9479 
+F-statistic:   728 on 1 and 39 DF,  p-value: < 2.2e-16 
+
+> fit=lm(log(qA)~log(k))
+> summary(fit)
+
+Call:
+lm(formula = log(qA) ~ log(k))
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.006937 -0.005841 -0.004525 -0.002555  0.024907 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.72274    0.01368  -52.83   <2e-16 ***
+log(k)       0.35160    0.01414   24.87   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.01119 on 39 degrees of freedom
+Multiple R-squared:  0.9407,	Adjusted R-squared:  0.9392 
+F-statistic: 618.6 on 1 and 39 DF,  p-value: < 2.2e-16
+
+> ltsReg(x=(-1/k), y=log(qA), intercept = TRUE, alpha =0.8)
+
+Call:
+ltsReg.default(x = (-1/k), y = log(qA), intercept = TRUE, alpha = 1)
+
+Coefficients:
+Intercept     (-1/k)  
+ -0.03219    0.91496  
+
+Scale estimate 0.01018 
+
+> summary(ltsReg(x=(-1/k), y=log(qA), intercept = TRUE, alpha =1))
+
+Call:
+ltsReg.default(x = (-1/k), y = log(qA), intercept = TRUE, alpha = 1)
+
+Residuals (from reweighted LS):
+       Min         1Q     Median         3Q        Max 
+-0.008477   -0.006564  -0.004525   0.001520    0.022507
+Coefficients:
+          Estimate Std. Error t value Pr(>|t|)    
+Intercept -0.03219   0.01312  -2.454 0.0187 ***
+(-1/k)     0.91496    0.03374  27.118  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.01031 on 39 degrees of freedom
+Multiple R-Squared: 0.9496,	Adjusted R-squared: 0.9483 
+F-statistic:  735.4 on 1 and 39 DF,  p-value: < 2.2e-16 
+
+> ltsReg(k, qA, intercept = TRUE, alpha = 0.8)
+
+Call:
+ltsReg.default(x = k, y = qA, intercept = TRUE, alpha = 0.8)
+
+Coefficients:
+Intercept          k  
+   0.4382     0.0909  
+
+Scale estimate 0.003001 
+
+> summary(ltsReg(k, qA, intercept = TRUE, alpha = 0.8))
+
+Call:
+ltsReg.default(x = k, y = qA, intercept = TRUE, alpha = 0.8)
+
+Residuals (from reweighted LS):
+      Min        1Q    Median        3Q       Max 
+-0.003512 -0.001502  0.000000  0.001187  0.004135 
+
+Coefficients:
+           Estimate Std. Error t value Pr(>|t|)    
+Intercept 0.4381702  0.0026409  165.92   <2e-16 ***
+k         0.0909006  0.0009917   91.66   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.002057 on 32 degrees of freedom
+Multiple R-Squared: 0.9962,	Adjusted R-squared: 0.9961 
+F-statistic:  8402 on 1 and 32 DF,  p-value: < 2.2e-16 
+
+> ltsReg(x=log(k), y=qA, intercept = TRUE, alpha =0.8)
+
+Call:
+ltsReg.default(x = log(k), y = qA, intercept = TRUE, alpha = 0.8)
+
+Coefficients:
+Intercept     log(k)  
+   0.4476     0.2397  
+
+Scale estimate 0.00145 
+
+> summary(ltsReg(x=log(k), y=qA, intercept = TRUE, alpha =0.8))
+
+Call:
+ltsReg.default(x = log(k), y = qA, intercept = TRUE, alpha = 0.8)
+
+Residuals (from reweighted LS):
+       Min         1Q     Median         3Q        Max 
+-1.453e-03 -4.241e-04 -4.934e-05  3.227e-04  2.136e-03 
+
+Coefficients:
+          Estimate Std. Error t value Pr(>|t|)    
+Intercept 0.447626   0.001225   365.5   <2e-16 ***
+log(k)    0.239708   0.001262   190.0   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.0009937 on 32 degrees of freedom
+Multiple R-Squared: 0.9991,	Adjusted R-squared: 0.9991 
+F-statistic: 3.61e+04 on 1 and 32 DF,  p-value: < 2.2e-16 
+
+> ltsReg(x=(-1/k), y=qA, intercept = TRUE, alpha =0.8)
+
+Call:
+ltsReg.default(x = (-1/k), y = qA, intercept = TRUE, alpha = 0.8)
+
+Coefficients:
+Intercept     (-1/k)  
+   0.9168     0.6187  
+
+Scale estimate 0.004114 
+
+> summary(ltsReg(x=(-1/k), y=qA, intercept = TRUE, alpha =0.8))
+
+Call:
+ltsReg.default(x = (-1/k), y = qA, intercept = TRUE, alpha = 0.8)
+
+Residuals (from reweighted LS):
+       Min         1Q     Median         3Q        Max 
+-0.0034059 -0.0018538 -0.0001748  0.0004827  0.0065266 
+
+Coefficients:
+          Estimate Std. Error t value Pr(>|t|)    
+Intercept 0.916813   0.003610  253.97   <2e-16 ***
+(-1/k)    0.618699   0.009271   66.74   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.00282 on 32 degrees of freedom
+Multiple R-Squared: 0.9929,	Adjusted R-squared: 0.9926 
+F-statistic:  4454 on 1 and 32 DF,  p-value: < 2.2e-16 
+
+> ltsReg(x=log(k), y=qA, intercept = TRUE, alpha =0.8)
+
+Call:
+ltsReg.default(x = log(k), y = qA, intercept = TRUE, alpha = 0.8)
+
+Coefficients:
+Intercept     log(k)  
+   0.4476     0.2397  
+
+Scale estimate 0.00145 
+
+> summary(ltsReg(x=log(k), y=qA, intercept = TRUE, alpha =0.8))
+
+Call:
+ltsReg.default(x = log(k), y = qA, intercept = TRUE, alpha = 0.8)
+
+Residuals (from reweighted LS):
+       Min         1Q     Median         3Q        Max 
+-1.453e-03 -4.241e-04 -4.934e-05  3.227e-04  2.136e-03 
+
+Coefficients:
+          Estimate Std. Error t value Pr(>|t|)    
+Intercept 0.447626   0.001225   365.5   <2e-16 ***
+log(k)    0.239708   0.001262   190.0   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.0009937 on 32 degrees of freedom
+Multiple R-Squared: 0.9991,	Adjusted R-squared: 0.9991 
+F-statistic: 3.61e+04 on 1 and 32 DF,  p-value: < 2.2e-16 
+
+> ltsReg(x=(-1/k), y=log(qA), intercept = TRUE, alpha =0.8)
+
+Call:
+ltsReg.default(x = (-1/k), y = log(qA), intercept = TRUE, alpha = 0.8)
+
+Coefficients:
+Intercept     (-1/k)  
+ -0.03646    0.91527  
+
+Scale estimate 0.004479 
+
+> summary(ltsReg(x=(-1/k), y=log(qA), intercept = TRUE, alpha =0.8))
+
+Call:
+ltsReg.default(x = (-1/k), y = log(qA), intercept = TRUE, alpha = 0.8)
+
+Residuals (from reweighted LS):
+       Min         1Q     Median         3Q        Max 
+-0.0040792 -0.0021775 -0.0001453  0.0005056  0.0075624 
+
+Coefficients:
+          Estimate Std. Error t value Pr(>|t|)    
+Intercept -0.03646    0.00393  -9.278 1.37e-10 ***
+(-1/k)     0.91527    0.01009  90.683  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.003071 on 32 degrees of freedom
+Multiple R-Squared: 0.9961,	Adjusted R-squared: 0.996 
+F-statistic:  8223 on 1 and 32 DF,  p-value: < 2.2e-16 
+
+> 
